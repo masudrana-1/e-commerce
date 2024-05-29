@@ -1,9 +1,9 @@
-"use client"
+
 
 const CartModal = () => {
     return (
         <div>
-            CardModal
+            
         </div>
     );
 };
