@@ -34,9 +34,9 @@ const ProductList = () => {
                     <span className="font-semibold">$79</span>
                 </div>
                 <div className="text-sm text-gray-500">
-                    Discription
+                    Description
                 </div>
-                <button className="rounded-2xl ring-1 ring-lama text-lama w-max py-2 px-4 text-xs hover:bg-lama hover:text-white">
+                <button className="rounded-2xl ring-1 ring-masud text-masud w-max py-2 px-4 text-xs hover:bg-masud hover:text-white">
                     Add to Cart
                 </button>
             </Link>
