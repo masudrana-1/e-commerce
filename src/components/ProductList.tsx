@@ -22,13 +22,23 @@ const ProductList = () => {
                         className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
                     />
                     <Image
-                        src="https://images.unsplash.com/photo-1627225924765-552d49cf47ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHQlMjBzaGlydHxlbnwwfHwwfHx8MA%3D%3D"
+                        src="https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dCUyMHNoaXJ0fGVufDB8fDB8fHww"
                         alt=""
                         fill
                         sizes="25w"
                         className="absolute object-cover rounded-md"
                     />
                 </div>
+                <div className="flex justify-between">
+                    <span className="font-medium">T-Shirt</span>
+                    <span className="font-semibold">$79</span>
+                </div>
+                <div className="text-sm text-gray-500">
+                    Discription
+                </div>
+                <button className="rounded-2xl ring-1 ring-lama text-lama w-max py-2 px-4 text-xs hover:bg-lama hover:text-white">
+                    Add to Cart
+                </button>
             </Link>
         </div>
     );
