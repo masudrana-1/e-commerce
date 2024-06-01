@@ -1,3 +1,5 @@
+import Filter from '@/components/Filter';
+import ProductList from '@/components/ProductList';
 import Image from 'next/image';
 import React from 'react';
 
@@ -20,6 +22,13 @@ const ListPage = () => {
                     <Image src="/woman.png" alt="" fill className="object-contain" />
                 </div>
             </div>
+
+            {/* Filter  */}
+            <Filter />
+            
+            {/* Product  */}
+            <h1 className="mt-12 text-xl font-semibold">Title</h1>
+            <ProductList/>
         </div>
     );
 };
