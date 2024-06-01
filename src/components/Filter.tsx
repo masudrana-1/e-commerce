@@ -48,6 +48,22 @@ const Filter = () => {
                     <option>All Filters</option>
                 </select>
             </div>
+
+            {/* sort  */}
+            <div className="">
+                <select
+                    name="sort"
+                    id=""
+                    className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
+                    // onChange={handleFilterChange}
+                >
+                    <option>Sort By</option>
+                    <option value="asc price">Price (low to high)</option>
+                    <option value="desc price">Price (high to low)</option>
+                    <option value="asc lastUpdated">Newest</option>
+                    <option value="desc lastUpdated">Oldest</option>
+                </select>
+            </div>
         </div>
     );
 };
