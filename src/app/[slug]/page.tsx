@@ -1,3 +1,5 @@
+import Add from '@/components/Add';
+import CustomizeProducts from '@/components/CustomizeProducts';
 import ProductImages from '@/components/ProductImages';
 import React from 'react';
 
@@ -24,6 +26,19 @@ const SinglePage = () => {
                     </h2>
                 </div>
                 <div className="h-[2px] bg-gray-100" />
+                <CustomizeProducts />
+                <Add />
+                
+                <div className="h-[2px] bg-gray-100" />
+                {/* additionalInfoSections */}
+                <div className="text-sm">
+                    <h4 className="font-medium mb-4">title</h4>
+                    <p>description</p>
+                </div>
+                <div className="h-[2px] bg-gray-100" />
+
+                {/* Reviews section  */}
+                <h1 className="text-2xl">User Reviews</h1>
             </div>
         </div>
     );
