@@ -3,12 +3,13 @@
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { products, collections } from "@wix/stores"
 import Cookies from "js-cookie";
+import { createContext, ReactNode } from "react";
 
 
 // check 1st time refresh token 
 const refreshToken = JSON.parse(Cookies.get("refreshToken") || "{}");
 
-const myWixClient = createClient({
+const wixClient = createClient({
     modules: {
         products,
         // currentCart
@@ -25,3 +26,20 @@ const myWixClient = createClient({
         },
     }),
 });
+
+
+export type WixClient = typeof wixClient;
+
+export const WixClientContext = createContext<WixClient>(wixClient);
+
+export const WixClientContextProvider = ({
+    children,
+    }: {
+        children: ReactNode;
+    }) => {
+        return (
+            <WixClientContext.Provider value={wixClient}>
+                {children}
+            </WixClientContext.Provider>
+        );
+    };
