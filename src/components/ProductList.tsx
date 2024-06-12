@@ -7,7 +7,7 @@ import Link from "next/link";
 // for new product
 const PRODUCT_PER_PAGE = 8;
 
-const ProductList = async ({ categoryId, limit }: { categoryId: string; limit?: number; }) => {
+const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: string; limit?: number; searchParams?: any;}) => {
     
     const wixClient = await wixClientServer();
         
