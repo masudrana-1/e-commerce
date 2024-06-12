@@ -1,9 +1,26 @@
 import Add from '@/components/Add';
 import CustomizeProducts from '@/components/CustomizeProducts';
 import ProductImages from '@/components/ProductImages';
+import { wixClientServer } from '@/lib/wixClientServer';
 import React from 'react';
 
-const SinglePage = () => {
+const SinglePage = async ({ params }: { params: { slug: string } }) => {
+
+    // console.log(params)
+    // fetch wix data 
+    const wixClient = await wixClientServer();
+
+    const products = await wixClient.products
+        .queryProducts()
+        .eq("slug", params.slug)
+        .find();
+
+    if (!products.items[0]) {
+        // return notFound();
+    }
+
+    const product = products.items[0];
+
     return (
         <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative flex flex-col lg:flex-row gap-16">
             {/* img  */}
