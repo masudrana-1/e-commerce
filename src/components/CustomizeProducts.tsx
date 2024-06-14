@@ -2,6 +2,7 @@
 
 import { products } from "@wix/stores";
 import { useState } from "react";
+import Add from "./Add";
 
 
 const CustomizeProducts = ({
@@ -16,6 +17,9 @@ const CustomizeProducts = ({
     
     // selected state 
     const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: string; }>({});
+
+    // variant state 
+    const [selectedVariant, setSelectedVariant] = useState<products.Variant>();
     
 
     // selected function 
@@ -79,7 +83,7 @@ const CustomizeProducts = ({
                                 </li>
                             ) : (
                                 <li
-                                    className="ring-1 ring-lama text-lama rounded-md py-1 px-4 text-sm"
+                                    className="ring-1 ring-masud text-masud rounded-md py-1 px-4 text-sm"
                                     style={{
                                         cursor: disabled ? "not-allowed" : "pointer",
                                         backgroundColor: selected
@@ -101,7 +105,13 @@ const CustomizeProducts = ({
                     </ul>
                 </div>
             ))}
-
+            <Add
+                productId={productId}
+                variantId={
+                selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
+                }
+                stockNumber={selectedVariant?.stock?.quantity || 0}
+            />
             {/* size section */}
             {/* <h4 className="font-medium">Choose a size</h4>
             <ul className="flex items-center gap-3">
