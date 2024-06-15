@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // for new product
-const PRODUCT_PER_PAGE = 8;
+const PRODUCT_PER_PAGE = 100;
 
 const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: string; limit?: number; searchParams?: any;}) => {
     
