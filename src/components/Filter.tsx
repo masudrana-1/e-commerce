@@ -1,6 +1,14 @@
+"use client"
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Filter = () => {
+
+    // search state 
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    const { replace } = useRouter();
+
     return (
         <div className="mt-12 flex justify-between">
             <div className="flex gap-6 flex-wrap">
