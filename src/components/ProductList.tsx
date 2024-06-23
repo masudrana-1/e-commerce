@@ -13,7 +13,7 @@ const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: st
         
 
 
-    const res = await wixClient.products
+    const productQuery = wixClient.products
         .queryProducts()
         .startsWith("name", searchParams?.name || "")
         .eq("collectionIds", categoryId)
@@ -24,8 +24,26 @@ const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: st
         .gt("priceData.price", searchParams?.min || 0)
         .lt("priceData.price", searchParams?.max || 999999)
         .limit(limit || PRODUCT_PER_PAGE)
-        .find();
+        .skip(
+            searchParams?.page
+                ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
+                : 0
+        );
+    // .find();
 
+    
+    if (searchParams?.sort) {
+        const [sortType, sortBy] = searchParams.sort.split(" ");
+
+        if (sortType === "asc") {
+            productQuery.ascending(sortBy);
+        }
+        if (sortType === "desc") {
+            productQuery.descending(sortBy);
+        }
+    }
+
+    const res = await productQuery.find();
 
     return (
         <div
