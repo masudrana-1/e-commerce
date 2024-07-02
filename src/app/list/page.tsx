@@ -9,8 +9,8 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
     // fetch wix data 
     const wixClient = await wixClientServer();
 
-    const category = await wixClient.collections.getCollectionBySlug(
-        searchParams.cat || "all-products"
+    const cat = await wixClient.collections.getCollectionBySlug(
+    searchParams.cat || "all-products"
     );
 
     // console.log(cat);
@@ -38,11 +38,11 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
             <Filter />
             
             {/* Product  */}
-            <h1 className="mt-12 text-xl font-semibold">{category?.collection?.name} For You!</h1>
+            <h1 className="mt-12 text-xl font-semibold">{cat?.collection?.name} For You!</h1>
             <Suspense fallback={"loading"}>
                 <ProductList
                     categoryId={
-                        category.collection?._id || "00000000-000000-000000-000000000001"
+                        cat.collection?._id || "00000000-000000-000000-000000000001"
                     }
                     searchParams={searchParams}
                 />
