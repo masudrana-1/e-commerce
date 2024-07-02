@@ -3,9 +3,10 @@ import { products } from "@wix/stores";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import Link from "next/link";
+import Pagination from "./pagination";
 
 // for new product
-const PRODUCT_PER_PAGE = 100;
+const PRODUCT_PER_PAGE = 1;
 
 const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: string; limit?: number; searchParams?: any;}) => {
     
@@ -94,6 +95,13 @@ const ProductList = async ({ categoryId, limit, searchParams }: { categoryId: st
                 </button>
                 </Link>
             ))}
+            
+                <Pagination
+                    currentPage={res.currentPage || 0}
+                    hasPrev={res.hasPrev()}
+                    hasNext={res.hasNext()}
+                />
+            
         </div>
     );
 };
