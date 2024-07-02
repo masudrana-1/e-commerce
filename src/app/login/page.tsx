@@ -120,6 +120,35 @@ const LoginPage = () => {
                 </button>
                 {/* error massage  */}
                 {error && <div className="text-red-600">{error}</div>}
+                {/* login  */}
+                {mode === MODE.LOGIN && (
+                    <div
+                        className="text-sm underline cursor-pointer"
+                        onClick={() => setMode(MODE.REGISTER)}
+                    >
+                        {"Don't"} have an account?
+                    </div>
+                )}
+                {/* register  */}
+                {mode === MODE.REGISTER && (
+                    <div
+                        className="text-sm underline cursor-pointer"
+                        onClick={() => setMode(MODE.LOGIN)}
+                    >
+                        Have and account?
+                    </div>
+                )}
+                {/* reset password  */}
+                {mode === MODE.RESET_PASSWORD && (
+                    <div
+                        className="text-sm underline cursor-pointer"
+                        onClick={() => setMode(MODE.LOGIN)}
+                    >
+                        Go back to Login
+                    </div>
+                )}
+                {/* massage  */}
+                {message && <div className="text-green-600 text-sm">{message}</div>}
             </form>
         </div>
     );
