@@ -89,6 +89,19 @@ const LoginPage = () => {
                         />
                     </div>
                 )}
+                {/* login and register password filed  */}
+                {mode === MODE.LOGIN || mode === MODE.REGISTER ? (
+                    <div className="flex flex-col gap-2">
+                        <label className="text-sm text-gray-700">Password</label>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            className="ring-2 ring-gray-300 rounded-md p-4"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                ) : null}
             </form>
         </div>
     );
