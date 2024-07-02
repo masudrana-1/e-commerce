@@ -25,6 +25,17 @@ const LoginPage = () => {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
 
+
+    // From title 
+    const formTitle =
+        mode === MODE.LOGIN
+        ? "Log in"
+        : mode === MODE.REGISTER
+        ? "Register"
+        : mode === MODE.RESET_PASSWORD
+        ? "Reset Your Password"
+        : "Verify Your Email";
+
     return (
         <div>
             loginPage
