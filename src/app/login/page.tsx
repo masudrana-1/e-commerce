@@ -71,7 +71,7 @@ const LoginPage = () => {
                         <input
                             type="email"
                             name="email"
-                            placeholder="john@gmail.com"
+                            placeholder="example@gmail.com"
                             className="ring-2 ring-gray-300 rounded-md p-4"
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -102,6 +102,24 @@ const LoginPage = () => {
                         />
                     </div>
                 ) : null}
+                {/* forgot password  */}
+                {mode === MODE.LOGIN && (
+                    <div
+                        className="text-sm underline cursor-pointer"
+                        onClick={() => setMode(MODE.RESET_PASSWORD)}
+                    >
+                        Forgot Password?
+                    </div>
+                )}
+                {/* button  */}
+                <button
+                    className="bg-masud text-white p-2 rounded-md disabled:bg-pink-200 disabled:cursor-not-allowed"
+                    disabled={isLoading}
+                >
+                    {isLoading ? "Loading..." : buttonTitle}
+                </button>
+                {/* error massage  */}
+                {error && <div className="text-red-600">{error}</div>}
             </form>
         </div>
     );
