@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import CartModal from "./CartModal";
+import { useWixClient } from "@/hooks/useWixClient";
 
 const NavIcons = () => {
 
@@ -16,17 +17,36 @@ const NavIcons = () => {
 
     const isLoggedIn = false;
 
-    const login = () => {
-        if (!isLoggedIn) {
-            router.push('/login')
-        }
-        setIsProfileOpen((prev)=> !prev)
-    }
+    // const login = () => {
+    //     if (!isLoggedIn) {
+    //         router.push('/login')
+    //     }
+    //     setIsProfileOpen((prev)=> !prev)
+    // }
 
     // logout 
     const handleLogout = async () => {
         
     };
+
+
+    // AUTH WITH WIX-MANAGED AUTH
+    // login by google / facebook
+
+    // const wixClient = useWixClient();
+
+    // const login = async () => {
+    //     const loginRequestData = wixClient.auth.generateOAuthData(
+    //     "http://localhost:3000"
+    //     );
+
+    //     // console.log(loginRequestData);
+
+    //     // set data local storage 
+    //     localStorage.setItem("oAuthRedirectData", JSON.stringify(loginRequestData));
+    //     const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
+    //     window.location.href = authUrl;
+    // };
 
     return (
         <div className="flex items-center gap-4 xl:gap-6 relative">
