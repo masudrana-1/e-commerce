@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
+import Cookies from "js-cookie";
 
 const NavIcons = () => {
 
@@ -32,7 +33,14 @@ const NavIcons = () => {
 
     // logout 
     const handleLogout = async () => {
-        
+        setIsLoading(true);
+        // remove cookies
+        Cookies.remove("refreshToken");
+        // logout from wix 
+        const { logoutUrl } = await wixClient.auth.logout(window.location.href);
+        setIsLoading(false);
+        setIsProfileOpen(false);
+        router.push(logoutUrl);
     };
 
 
@@ -70,8 +78,7 @@ const NavIcons = () => {
                 <div className="absolute p-4 rounded-md top-12 left-0 bg-white text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20">
                     <Link href="/profile">Profile</Link>
                     <div className="mt-2 cursor-pointer" onClick={handleLogout}>
-                        logout
-                        {/* {isLoading ? "Logging out" : "Logout"} */}
+                        {isLoading ? "Logging out" : "Logout"}
                     </div>
                 </div>
             )}
