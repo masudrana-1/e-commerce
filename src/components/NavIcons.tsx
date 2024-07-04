@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
@@ -11,18 +11,24 @@ const NavIcons = () => {
 
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const router = useRouter();
+    const pathName = usePathname();
+
+    const wixClient = useWixClient();
+    const isLoggedIn = wixClient.auth.loggedIn();
 
 
-    const isLoggedIn = false;
+    // const isLoggedIn = false;
 
-    const login = () => {
+    const handleProfile = () => {
         if (!isLoggedIn) {
-            router.push('/login')
+            router.push("/login");
+        } else {
+            setIsProfileOpen((prev) => !prev);
         }
-        setIsProfileOpen((prev)=> !prev)
-    }
+    };
 
     // logout 
     const handleLogout = async () => {
@@ -58,7 +64,7 @@ const NavIcons = () => {
                 width={22}
                 height={22}
                 className="cursor-pointer"
-                onClick={login}
+                onClick={handleProfile}
             />
             {isProfileOpen && (
                 <div className="absolute p-4 rounded-md top-12 left-0 bg-white text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20">
