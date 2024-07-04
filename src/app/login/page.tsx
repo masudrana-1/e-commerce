@@ -1,5 +1,6 @@
 "use client"
 
+import { useWixClient } from "@/hooks/useWixClient";
 import { useState } from "react";
 
 
@@ -13,6 +14,7 @@ enum MODE {
 
 const LoginPage = () => {
 
+    const wixClient = useWixClient();
 
     // all states
     const [mode, setMode] = useState(MODE.LOGIN);
@@ -55,9 +57,48 @@ const LoginPage = () => {
 
         try {
             
+            let response;
+
+            switch (mode) {
+                // login 
+                case MODE.LOGIN:
+                    response = await wixClient.auth.login({
+                        email,
+                        password,
+                    });
+                    break;
+                
+                // register 
+                case MODE.REGISTER:
+                    response = await wixClient.auth.register({
+                        email,
+                        password,
+                        profile: { nickname: username },
+                    });
+                    break;
+                
+                // reset password 
+                case MODE.RESET_PASSWORD:
+                    response = await wixClient.auth.sendPasswordResetEmail(
+                        email,
+                        window.location.href
+                    );
+                setMessage("Password reset email sent. Please check your e-mail.");
+                    break;
+                
+                // email verification
+                case MODE.EMAIL_VERIFICATION:
+                    response = await wixClient.auth.processVerification({
+                        verificationCode: emailCode,
+                    });
+                break;
+            }
+
         } catch (error) {
             console.log(error);
-            setError("Something went wrong")
+            setError("Something went wrong!");
+        } finally {
+            setIsLoading(false);
         }
     }
     
