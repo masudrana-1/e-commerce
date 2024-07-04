@@ -17,12 +17,12 @@ const NavIcons = () => {
 
     const isLoggedIn = false;
 
-    // const login = () => {
-    //     if (!isLoggedIn) {
-    //         router.push('/login')
-    //     }
-    //     setIsProfileOpen((prev)=> !prev)
-    // }
+    const login = () => {
+        if (!isLoggedIn) {
+            router.push('/login')
+        }
+        setIsProfileOpen((prev)=> !prev)
+    }
 
     // logout 
     const handleLogout = async () => {
