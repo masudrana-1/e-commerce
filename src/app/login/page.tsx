@@ -49,7 +49,16 @@ const LoginPage = () => {
     
     // form submit function 
     const handleSubmit = async (e: React.FormEvent) => {
-        
+        e.preventDefault();
+        setIsLoading(true);
+        setError("");
+
+        try {
+            
+        } catch (error) {
+            console.log(error);
+            setError("Something went wrong")
+        }
     }
     
 
