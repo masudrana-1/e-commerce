@@ -54,9 +54,9 @@ const NavIcons = () => {
     //     "http://localhost:3000"
     //     );
 
-    //     // console.log(loginRequestData);
+        // console.log(loginRequestData);
 
-    //     // set data local storage 
+        // set data local storage 
     //     localStorage.setItem("oAuthRedirectData", JSON.stringify(loginRequestData));
     //     const { authUrl } = await wixClient.auth.getAuthUrl(loginRequestData);
     //     window.location.href = authUrl;
