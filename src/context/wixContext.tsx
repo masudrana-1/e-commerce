@@ -1,5 +1,6 @@
 "use client"
 
+import { currentCart } from "@wix/ecom";
 import { createClient, OAuthStrategy } from "@wix/sdk";
 import { products, collections } from "@wix/stores"
 import Cookies from "js-cookie";
@@ -13,7 +14,7 @@ const wixClient = createClient({
     modules: {
         products,
         collections,
-        // currentCart
+        currentCart
     },
     auth: OAuthStrategy({
 
