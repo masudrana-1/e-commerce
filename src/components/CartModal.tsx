@@ -14,28 +14,9 @@ const CartModal = () => {
     const wixClient = useWixClient();
     const { cart, isLoading, removeItem } = useCartStore();
 
+    // check out 
     const handleCheckout = async () => {
-        try {
-            const checkout =
-                await wixClient.currentCart.createCheckoutFromCurrentCart({
-                    channelType: currentCart.ChannelType.WEB,
-                });
-
-            // const { redirectSession } =
-            //     await wixClient.redirects.createRedirectSession({
-            //         ecomCheckout: { checkoutId: checkout.checkoutId },
-            //         callbacks: {
-            //             postFlowUrl: window.location.origin,
-            //             thankYouPageUrl: `${window.location.origin}/success`,
-            //         },
-            //     });
-
-            // if (redirectSession?.fullUrl) {
-            //     window.location.href = redirectSession.fullUrl;
-            // }
-        } catch (err) {
-            console.log(err);
-        }
+        
     };
 
     return (
@@ -102,7 +83,7 @@ const CartModal = () => {
                     <div className="">
                         <div className="flex items-center justify-between font-semibold">
                             <span className="">Subtotal</span>
-                            <span className="">${}</span>
+                            {/* <span className="">${cart.subtotal.amount}</span> */}
                         </div>
                         <p className="text-gray-500 text-sm mt-2 mb-4">
                             Shipping and taxes calculated at checkout.
